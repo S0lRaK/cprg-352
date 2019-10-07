@@ -1,0 +1,4 @@
+<%@page import="java.util.Date"%>
+<footer style="width: 100%; height: 50px; background-color: goldenrod">
+    <h1>The current date is <%= new Date() %></h1>
+</footer>
