@@ -16,13 +16,16 @@ h3 {
 form#login {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-form#login + div {
+form#login>div {
     display: flex;
     flex-direction: row;
     width: 50vw;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1%;
 }
 
 .inputs {
@@ -102,7 +105,8 @@ button.action:hover {
     background-color: greenyellow;
 }
 
-button[name=add] {
+button[name=add],
+button[name=login] {
     width: 50%;
     padding: 1%;
 }

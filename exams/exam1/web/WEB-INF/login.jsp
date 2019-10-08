@@ -32,7 +32,7 @@
                 </label>
                 <input type="password" name="password" id="inputPassword">
             </div>
-            <button type="submit">
+            <button type="submit" class="action" name="login">
                 Login
             </button>
         </form>
