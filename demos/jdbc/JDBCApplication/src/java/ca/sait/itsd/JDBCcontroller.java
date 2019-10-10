@@ -31,7 +31,7 @@ public class JDBCcontroller extends HttpServlet {
         String username = request.getParameter("username");
         String newUsername = request.getParameter("newUsername");
         
-        DBoperationsPS dbOps = new DBoperationsPS();
+        DBoperationsCS dbOps = new DBoperationsCS();
         
         if (action != null && !action.equals("")) {
             switch (action) {
