@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/ConnectionPoolApplication">
+    <Resource
+        name="jdbc/users"
+        auth="Container"
+        driverClassName="com.mysql.jdbc.Driver"
+        url="jdbc:mysql://localhost:3306/users1?autoReconnect=true"
+        username="root"
+        password="password"
+        maxActive="100"
+        maxIdle="30"
+        maxWait="10000"
+        logAbandonded="true"
+        removeAbandoned="true"
+        removeAbandonedTimeout="60"
+        type="javax.sql.DataSource"
+    />
+</Context>
