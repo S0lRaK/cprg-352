@@ -11,6 +11,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <c:set var="root" value="${pageContext.request.contextPath}" />
+        <link rel="stylesheet" href="${root}/styles/index.css">
     </head>
     <body>
         <h1>Manage Notes</h1>
