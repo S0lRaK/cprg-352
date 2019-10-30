@@ -34,7 +34,7 @@ public class DBcontroller extends HttpServlet {
         
         DBoperations dBoperations = new DBoperations();
         
-        if (add != null && !add.equals("")) {
+        if (add != null && !note.equals("")) {
             dBoperations.addNote(note);
         }
         
