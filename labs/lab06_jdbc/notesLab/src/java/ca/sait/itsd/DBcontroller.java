@@ -36,6 +36,8 @@ public class DBcontroller extends HttpServlet {
         
         if (add != null && !note.equals("")) {
             dBoperations.addNote(note);
+        } else if (delete != null && !delete.equals("")) {
+            dBoperations.deleteNote(delete);
         }
         
         request.setAttribute("notes", dBoperations.getNotes());

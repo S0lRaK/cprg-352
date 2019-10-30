@@ -89,4 +89,23 @@ public class DBoperations {
         }
         return isRowAffected;
     }
+    
+    public boolean deleteNote(String noteId) throws ClassNotFoundException {
+        boolean isRowAffected = false;
+        String sqlQuery = "DELETE FROM notes WHERE noteID='" + noteId + "';";
+
+        try {
+            Connection connection = getConnection();
+            Statement statement = connection.createStatement();
+
+            int numRowsAffected = statement.executeUpdate(sqlQuery);
+            isRowAffected = (numRowsAffected > 0);
+
+            statement.close();
+            connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBoperations.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return isRowAffected;
+    }
 }
