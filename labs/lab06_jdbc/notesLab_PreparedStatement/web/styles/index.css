@@ -1,0 +1,11 @@
+/* 
+    Created on : Oct 29, 2019, 8:36:19 PM
+    Author     : Carlos J. Garcia Carmona <carlos.garciacarmona@edu.sait.ca>
+*/
+table {
+    border: 1px lightgray outset;
+}
+
+th, td {
+    border: 1px lightgray inset;
+}
