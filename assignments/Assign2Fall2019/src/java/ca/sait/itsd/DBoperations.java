@@ -6,8 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -48,19 +46,19 @@ public class DBoperations {
 			int stockLevelIndex = resultSet.findColumn("productStockLevel");
 
 			while (resultSet.next()) {
-				Map product = new HashMap();
+				Product product = new Product();
 
 				int id = resultSet.getInt(idIndex);
-				product.put("id", id);
+				product.setProductID(id);
 
 				String description = resultSet.getString(descriptionIndex);
-				product.put("description", description);
+				product.setProductDescription(description);
 
 				float unitPrice = resultSet.getFloat(unitPriceIndex);
-				product.put("unitPrice", unitPrice);
+				product.setProductUnitPrice(unitPrice);
 
 				int stockLevel = resultSet.getInt(stockLevelIndex);
-				product.put("stockLevel", stockLevel);
+				product.setProductStockLevel(stockLevel);
 
 				list.add(product);
 			}

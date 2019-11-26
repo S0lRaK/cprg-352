@@ -75,18 +75,18 @@
 		  <tbody>
 			<c:forEach var="product" items="${requestScope.productList}">
 				<tr>
-				  <td>${product.description}</td>
-				  <td>${product.unitPrice}</td>
-				  <td>${product.stockLevel}</td>
+				  <td>${product.productDescription}</td>
+				  <td>${product.productUnitPrice}</td>
+				  <td>${product.productStockLevel}</td>
 				  <td class="delete-cell">
-					<a href="ProductController?action=delete&id=${product.id}">
+					<a href="ProductController?action=delete&id=${product.productID}">
 					  <button data-name="delete">
 						<i class="material-icons">delete</i>
 					  </button>
 					</a>
 				  </td>
 				  <td class="update-cell">
-					<a href="ProductController?action=update&id=${product.id}">
+					<a href="ProductController?action=update&id=${product.productID}">
 					  <button data-name="update">
 						<i class="material-icons">edit</i>
 					  </button>
