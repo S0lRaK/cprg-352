@@ -73,7 +73,9 @@
 			</tr>
 		  </thead>
 		  <tbody>
+			<c:set var="totalInventoryValue"/>
 			<c:forEach var="product" items="${requestScope.productList}">
+				<c:set var="totalInventoryValue" value="${totalInventoryValue + (product.productUnitPrice * product.productStockLevel)}"/>
 				<tr>
 				  <td>${product.productDescription}</td>
 				  <td>${product.productUnitPrice}</td>
@@ -97,8 +99,8 @@
 		  </tbody>
 		  <tfoot>
 			<tr>
-			  <th>
-				Total Inventory Value: $
+			  <th colspan="5">
+				Total Inventory Value: $<b>${totalInventoryValue}</b>
 			  </th>
 			</tr>
 		  </tfoot>
