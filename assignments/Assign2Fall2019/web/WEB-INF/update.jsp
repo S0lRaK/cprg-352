@@ -20,31 +20,32 @@
   </head>
   <body>
 	<h1>Update Product - Assignment 2</h1>
-	<form action="ProductController" method="POST">
+	<form action="ProductController" method="GET">
 	  <h2>Update Product</h2>
 	  <div class="inputs">
 		<div class="input">
 		  <label for="inputDescription">
 			Description:
 		  </label>
-		  <input id="inputDescription" name="description" type="text">
+		  <input id="inputDescription" name="description" type="text" value="${requestScope.product.productDescription}">
 		</div>
 		<div class="input">
 		  <label for="inputUnitPrice">
 			Unit Price:
 		  </label>
-		  <input id="inputUnitPrice" name="unitPrice" type="number"  placeholder="0.00" min="0" step="0.01">
+		  <input id="inputUnitPrice" name="unitPrice" type="number"  placeholder="0.00" min="0" step="0.01" value="${requestScope.product.productUnitPrice}">
 		</div>
 		<div class="input">
 		  <label for="inputStockLevel">
 			Stock Level:
 		  </label>
-		  <input id="inputStockLevel" name="stockLevel" type="number" placeholder="0" min="0" step="1">
+		  <input id="inputStockLevel" name="stockLevel" type="number" placeholder="0" min="0" step="1" value="${requestScope.product.productStockLevel}">
 		</div>
 		<button type="submit" data-name="save" class="action">
-		  Save <i class="material-icons">save</i>
+		  SAVE <i class="material-icons">save</i>
 		</button>
 		<input type="hidden" name="action" value="save">
+		<input type="hidden" name="id" value="${requestScope.product.productID}">
 	  </div
 	</form>
   </body>

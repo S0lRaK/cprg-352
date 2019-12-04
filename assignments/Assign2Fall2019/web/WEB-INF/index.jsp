@@ -27,7 +27,7 @@
 		</a>
 	  </p>
 	</div>
-	<form action="ProductController" method="POST">
+	<form action="ProductController" method="GET">
 	  <h2>
 		Add Product
 	  </h2>
@@ -51,7 +51,7 @@
 		  <input id="inputStockLevel" name="stockLevel" type="number" placeholder="0" min="0" step="1">
 		</div>
 		<button type="submit" data-name="add" class="action">
-		  Add <i class="material-icons">add</i>
+		  ADD <i class="material-icons">add</i>
 		</button>
 		<input type="hidden" name="action" value="add">
 		<h3>${requestScope.message}</h3>
@@ -74,8 +74,10 @@
 		  </thead>
 		  <tbody>
 			<c:set var="totalInventoryValue"/>
+			<c:set var="index" value="0"/>
 			<c:forEach var="product" items="${requestScope.productList}">
-				<c:set var="totalInventoryValue" value="${totalInventoryValue + (product.productUnitPrice * product.productStockLevel)}"/>
+				<c:set var="totalInventoryValue"
+					   value="${totalInventoryValue + (product.productUnitPrice * product.productStockLevel)}"/>
 				<tr>
 				  <td>${product.productDescription}</td>
 				  <td>${product.productUnitPrice}</td>
@@ -88,19 +90,20 @@
 					</a>
 				  </td>
 				  <td class="update-cell">
-					<a href="ProductController?action=update&id=${product.productID}">
+					<a href="ProductController?action=update&id=${product.productID}&index=${index}">
 					  <button data-name="update">
 						<i class="material-icons">edit</i>
 					  </button>
 					</a>
 				  </td>
 				</tr>
+				<c:set var="index" value="${index + 1}"/>
 			</c:forEach>
 		  </tbody>
 		  <tfoot>
 			<tr>
 			  <th colspan="5">
-				Total Inventory Value: $<b>${totalInventoryValue}</b>
+				Total Inventory Value: $${totalInventoryValue}
 			  </th>
 			</tr>
 		  </tfoot>

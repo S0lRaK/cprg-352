@@ -74,7 +74,10 @@ public class DBoperations {
 
 	public boolean addProduct(String description, float unitPrice, int stockLevel) throws ClassNotFoundException {
 		boolean isRowAffected = false;
-		String sqlQuery = "INSERT INTO product (productDesc, productUnitPrice, productStockLevel) VALUES (?, ?, ?);";
+		String sqlQuery = "INSERT INTO product ("
+				+ "productDesc, productUnitPrice, productStockLevel"
+				+ ") "
+				+ "VALUES (?, ?, ?);";
 
 		try {
 			Connection connection = getConnection();
@@ -96,7 +99,8 @@ public class DBoperations {
 
 	public boolean deleteProduct(int productId) throws ClassNotFoundException {
 		boolean isRowAffected = false;
-		String sqlQuery = "DELETE FROM product WHERE productID=?;";
+		String sqlQuery = "DELETE FROM product "
+				+ "WHERE productID=?;";
 
 		try {
 			Connection connection = getConnection();
@@ -114,24 +118,28 @@ public class DBoperations {
 		return isRowAffected;
 	}
 
-//	public boolean updateProduct(String username, String newUsername) throws ClassNotFoundException {
-//		boolean result = false;
-//		String sql = "update users set username=? where username=?;";
-//
-//		try {
-//			Connection connection = getConnection();
-//			PreparedStatement statement = connection.prepareStatement(sql);
-//			statement.setString(1, newUsername);
-//			statement.setString(2, username);
-//
-//			int rowsAffected = statement.executeUpdate();
-//			result = (rowsAffected > 0);
-//
-//			statement.close();
-//			connection.close();
-//		} catch (SQLException exception) {
-//			exception.printStackTrace();
-//		}
-//		return result;
-//	}
+	public boolean updateProduct(int productId, String description, float unitPrice, int stockLevel) throws ClassNotFoundException {
+		boolean isRowAffected = false;
+		String sqlQuery = "UPDATE product "
+				+ "SET productDesc=?, productUnitPrice=?, productStockLevel=? "
+				+ "WHERE productID=?;";
+		
+		try {
+			Connection connection = getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+			preparedStatement.setString(1, description);
+			preparedStatement.setFloat(2, unitPrice);
+			preparedStatement.setInt(3, stockLevel);
+			preparedStatement.setInt(4, productId);
+			
+			int numRowsAffected = preparedStatement.executeUpdate();
+			isRowAffected = (numRowsAffected > 0);
+			
+			preparedStatement.close();
+			connection.close();
+		} catch (SQLException ex) {
+			Logger.getLogger(DBoperations.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return isRowAffected;
+	}
 }

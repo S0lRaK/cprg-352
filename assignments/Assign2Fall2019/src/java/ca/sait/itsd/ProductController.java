@@ -41,9 +41,10 @@ public class ProductController extends HttpServlet {
 		String stockLevel = request.getParameter("stockLevel");
 		String action = request.getParameter("action");
 		String id = request.getParameter("id");
+		String index = request.getParameter("index");
 
 		DBoperations dBoperations = new DBoperations();
-
+		
 		if (report != null) {
 			request.getRequestDispatcher("/WEB-INF/inventoryReport.jsp")
 					.forward(request, response);
@@ -61,6 +62,8 @@ public class ProductController extends HttpServlet {
 					} else {
 						request.setAttribute("message", MSG_INCOMPLETE);
 					}
+					request.setAttribute("productList", dBoperations.getProducts());
+					request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 					break;
 				case "delete":
 					if (dBoperations.deleteProduct(Integer.parseInt(id))) {
@@ -68,27 +71,31 @@ public class ProductController extends HttpServlet {
 					} else {
 						request.setAttribute("message", MSG_DELETE_ERROR);
 					}
+					request.setAttribute("productList", dBoperations.getProducts());
+					request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 					break;
 				case "update":
+					request.setAttribute("product", dBoperations.getProducts().get(Integer.parseInt(index)));
 					request.getRequestDispatcher("/WEB-INF/update.jsp")
 							.forward(request, response);
 					break;
 				case "save":
-//					if (dBoperations.updateUsername(username, newUsername)) {
-//						request.setAttribute("message", "Username updated");
-//					} else {
-//						request.setAttribute("message", "Error updating username!");
-//					}
+					if (dBoperations.updateProduct(Integer.parseInt(id), description, Float.parseFloat(unitPrice),	Integer.parseInt(stockLevel))) {
+						request.setAttribute("message", MSG_UPDATE);
+					} else {
+						request.setAttribute("message", MSG_UPDATE_ERROR);
+					}
+					request.setAttribute("productList", dBoperations.getProducts());
+					request.getRequestDispatcher("/WEB-INF/index.jsp")
+							.forward(request, response);
 					break;
 				default:
 					break;
 			}
+		} else {
+			request.setAttribute("productList", dBoperations.getProducts());
+			request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 		}
-//		else {
-//			
-//		}
-		request.setAttribute("productList", dBoperations.getProducts());
-		request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
 	}
 
 	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
