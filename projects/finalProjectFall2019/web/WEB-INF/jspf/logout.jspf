@@ -1,0 +1,7 @@
+<div>
+  <p>
+	<a href="UserServices?logout=true">
+	  Logout
+	</a>
+  </p>
+</div>

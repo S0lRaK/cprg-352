@@ -1,3 +1,5 @@
-<p>
-  Welcome, ${sessionScope.username}
-</p>
+<div>
+  <p>
+	Welcome, ${sessionScope.username}
+  </p>
+</div>
