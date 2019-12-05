@@ -13,5 +13,7 @@
   </head>
   <body>
 	<h1>Orders</h1>
+	<%--<jsp:include page="jspf/welcome.jspf"/>--%>
+	<%@include file="jspf/welcome.jspf" %>
   </body>
 </html>
