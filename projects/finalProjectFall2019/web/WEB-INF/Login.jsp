@@ -20,7 +20,7 @@
   </head>
   <body>
 	<h1>Order Application</h1>
-	<form action="UserServices" method="GET">
+	<form action="UserServices" method="POST">
 	  <div>
 		<div>
 		  <label for="inputUsername">
