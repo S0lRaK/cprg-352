@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/finalProjectFall2019"/>
+<Context path="/finalProjectFall2019">
+	<Resource
+		name="jdbc/finalProjectFall2019"
+		auth="Container"
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/finalProjectFall2019?autoReconnect=true"
+		username="root"
+		password="password"
+		maxActive="100"
+		maxIdle="30"
+		maxWait="10000"
+		logAbandonded="true"
+		removeAbandoned="true"
+		removeAbandonedTimeout="60"
+		type="javax.sql.DataSource"
+	/>
+</Context>
